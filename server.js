@@ -11,6 +11,7 @@ const io = socket(server,{
   }
 })
 
+
 let foods = {
   a: "Jollof Rice",
   b: "Ogbono & Fufu",
@@ -24,6 +25,12 @@ let foods = {
 }
 
 let currentOrder =[]
+
+app.use(express.static('public'))
+
+app.get('/', (req, res)=>{
+  res.sendFile(__dirname + "/UI/index.html")
+})
 
 io.on('connection', (socket)=>{
 
